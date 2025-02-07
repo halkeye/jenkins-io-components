@@ -67,7 +67,7 @@ export class NavbarLink extends LitElement {
   // eslint-disable-next-line lit/no-native-attributes
   class = "";
 
-  @property()
+  @property({ attribute: 'location-pathname' })
   locationPathname = location.pathname;
 
   override render() {

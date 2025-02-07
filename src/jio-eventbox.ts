@@ -13,7 +13,7 @@ export class EventBox extends LitElement {
   @property()
   date: string | number | undefined;
 
-  @property()
+  @property({ attribute: 'end-date' })
   endDate: string | number | undefined;
 
   @property({type: String})

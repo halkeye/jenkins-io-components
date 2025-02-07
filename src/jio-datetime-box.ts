@@ -79,8 +79,8 @@ export class DatetimeBox extends LitElement {
    * Whats the end time of this date
    * @optional
   */
-  @property()
-  endDate: string | number | undefined;
+  @property({ attribute: 'end-date' })
+  endDate: string | number | undefined;  
 
   override render() {
     const date = dateConverter(this.date) || new Date();

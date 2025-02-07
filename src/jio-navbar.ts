@@ -34,11 +34,11 @@ export class Navbar extends LitElement {
   /**
    * Show search box
    */
-  @property({type: Boolean})
-  showSearchBox: Boolean = false;
+  @property({ attribute: 'show-search-box', type: Boolean })
+  showSearchBox = false;
 
-  @property()
-  locationPathname: string = location.pathname;
+  @property({ attribute: 'location-pathname' })
+  locationPathname = location.pathname;
 
 
   /**
