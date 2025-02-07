@@ -1,4 +1,4 @@
-import { Meta } from '@storybook/addon-docs';
+import { Meta } from '@storybook/blocks';
 
 <Meta title="Example/Introduction" />
 
@@ -30,7 +30,7 @@ npm CDNs like [unpkg.com]() can directly serve files that have been published to
 
 For this element to work from unpkg.com specifically, you need to include the `?module` query parameter, which tells unpkg.com to rewrite "bare" module specifiers to full URLs.
 
-#### Modern Browsers 
+#### Modern Browsers
 
 ```html
 <script type="module" src="https://unpkg.com/@jenkinsci/jenkins-io-components?module"></script>
@@ -46,7 +46,7 @@ For this element to work from unpkg.com specifically, you need to include the `?
 <!-- load the components (module for modern, cjs for legacy) -->
 <script data="jio" src="https://unpkg.com/@jenkinsci/jenkins-io-components?module" type="module"></script>
 <script data="jio" nomodule="" src="https://unpkg.com/@jenkinsci/jenkins-io-components"></script>
-````
+```
 
 ## Usage
 

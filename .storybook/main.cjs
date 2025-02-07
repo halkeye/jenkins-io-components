@@ -4,13 +4,11 @@ const processor = postcss(require('../postcss.config.cjs'));
 
 module.exports = {
   core: {
-    builder: "webpack5",
-    manager: "webpack5",
+    manager: "webpack5"
   },
-  "stories": [
-    "../src/**/*.stories.mdx",
-    "../src/**/*.stories.@(js|jsx|ts|tsx)"
-  ],
+
+  "stories": ["../src/**/*.mdx", "../src/**/*.stories.@(js|jsx|ts|tsx)"],
+
   "addons": [
     "storybook-dark-mode",
     "@storybook/addon-interactions",
@@ -18,15 +16,21 @@ module.exports = {
     "@storybook/addon-links",
     "@storybook/addon-essentials",
     "@storybook/addon-coverage",
-    "../sb-addons/locale-selector"
+    "../sb-addons/locale-selector",
+    "@storybook/addon-webpack5-compiler-babel",
+    "@chromatic-com/storybook",
+    "@storybook/addon-mdx-gfm"
   ],
+
   "framework": {
     "name": "@storybook/web-components-webpack5",
     "options": {}
   },
+
   features: {
     interactionsDebugger: true,
   },
+
   webpackFinal: async (config/*, {}*/) => {
     // `configType` has a value of 'DEVELOPMENT' or 'PRODUCTION'
     // You can change the configuration based on that.
@@ -48,4 +52,6 @@ module.exports = {
     // Return the altered config
     return config;
   },
+
+  docs: {}
 }

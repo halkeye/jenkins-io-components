@@ -1,4 +1,4 @@
-import {expect} from '@storybook/jest';
+import {expect} from '@storybook/test';
 import {StoryObj, Meta} from '@storybook/web-components';
 import {html} from 'lit';
 import {ifDefined} from 'lit/directives/if-defined.js';
@@ -11,7 +11,11 @@ export default {
   component: 'jio-datetime-box',
 } as Meta;
 
-const render = ({endDate, date}) => html`<jio-datetime-box endDate=${ifDefined(endDate)} date=${ifDefined(date)} ></jio-datetime-box>`;
+const render = ({endDate, date}) =>
+  html`<jio-datetime-box
+    endDate=${ifDefined(endDate)}
+    date=${ifDefined(date)}
+  ></jio-datetime-box>`;
 
 // while having no time could potentially be useful, it makes storybook output something different each time
 // export const WithNoProperties: StoryObj<DatetimeBox> = {render};
@@ -32,14 +36,17 @@ export const WithStartTimeISO: StoryObj<DatetimeBox> = {
     expect(dateContainer.children).toHaveLength(1);
 
     const timeContainer = dateContainer.querySelector('time');
-    expect(timeContainer).toHaveAttribute('datetime', '2022-10-01T00:00:00.000Z');
+    expect(timeContainer).toHaveAttribute(
+      'datetime',
+      '2022-10-01T00:00:00.000Z'
+    );
     expect(timeContainer).toHaveAttribute('title', 'Start Time');
     expect(timeContainer.children).toHaveLength(2);
     expect(timeContainer.querySelector('.month')).toHaveTextContent('Oct');
     expect(timeContainer.querySelector('.day')).toHaveTextContent('01');
 
     expect(container.children[1]).toHaveTextContent('01:00 AM');
-  }
+  },
 };
 
 export const WithStartTimeTimestamp: StoryObj<DatetimeBox> = {
@@ -58,14 +65,17 @@ export const WithStartTimeTimestamp: StoryObj<DatetimeBox> = {
     expect(dateContainer.children).toHaveLength(1);
 
     const timeContainer = dateContainer.querySelector('time');
-    expect(timeContainer).toHaveAttribute('datetime', '2022-10-01T00:00:00.000Z');
+    expect(timeContainer).toHaveAttribute(
+      'datetime',
+      '2022-10-01T00:00:00.000Z'
+    );
     expect(timeContainer).toHaveAttribute('title', 'Start Time');
     expect(timeContainer.children).toHaveLength(2);
     expect(timeContainer.querySelector('.month')).toHaveTextContent('Oct');
     expect(timeContainer.querySelector('.day')).toHaveTextContent('01');
 
     expect(container.children[1]).toHaveTextContent('01:00 AM');
-  }
+  },
 };
 
 export const WithStartAndEndTime: StoryObj<DatetimeBox> = {
@@ -85,19 +95,27 @@ export const WithStartAndEndTime: StoryObj<DatetimeBox> = {
     expect(dateContainer.children).toHaveLength(2);
 
     const startTimeContainer = dateContainer.querySelectorAll('time')[0];
-    expect(startTimeContainer).toHaveAttribute('datetime', '2022-10-01T00:00:00.000Z');
+    expect(startTimeContainer).toHaveAttribute(
+      'datetime',
+      '2022-10-01T00:00:00.000Z'
+    );
     expect(startTimeContainer).toHaveAttribute('title', 'Start Time');
     expect(startTimeContainer.children).toHaveLength(2);
-    expect(startTimeContainer.querySelector('.month')).toHaveTextContent(/^Oct$/);
+    expect(startTimeContainer.querySelector('.month')).toHaveTextContent(
+      /^Oct$/
+    );
     expect(startTimeContainer.querySelector('.day')).toHaveTextContent('01');
 
     const endTimeContainer = dateContainer.querySelectorAll('time')[1];
-    expect(endTimeContainer).toHaveAttribute('datetime', '2022-12-25T00:00:00.000Z');
+    expect(endTimeContainer).toHaveAttribute(
+      'datetime',
+      '2022-12-25T00:00:00.000Z'
+    );
     expect(endTimeContainer).toHaveAttribute('title', 'End Time');
     expect(endTimeContainer.children).toHaveLength(2);
     expect(endTimeContainer.querySelector('.month')).toHaveTextContent('Dec');
     expect(endTimeContainer.querySelector('.day')).toHaveTextContent('25');
 
     expect(container.children[1]).toHaveTextContent('01:00 AM');
-  }
+  },
 };
