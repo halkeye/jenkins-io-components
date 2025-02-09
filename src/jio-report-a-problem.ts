@@ -18,7 +18,7 @@ export class ReportAProblem extends LitElement {
   /**
    * Overrides the page title. Defaults to page title
    */
-  @property()
+  @property({ attribute: 'page-title' })
   pageTitle = '';
 
   /**
@@ -30,19 +30,19 @@ export class ReportAProblem extends LitElement {
   /**
    * Github source path relative to $githubRepo
    */
-  @property()
+  @property({ attribute: 'source-path' })
   sourcePath = '';
 
   /**
    * Github repo
    */
-  @property()
+  @property({ attribute: 'github-repo' })
   githubRepo = '';
 
   /**
    * Github branch
    */
-  @property()
+  @property({ attribute: 'github-branch' })
   githubBranch = 'master';
 
   /**

@@ -46,25 +46,25 @@ export class Footer extends LitElement {
    /**
     * Github source path relative to $githubRepo
     */
-   @property()
+   @property({ attribute: 'source-path' })
    sourcePath = '';
 
    /**
     * Github repo
     */
-   @property()
+   @property({ attribute: 'github-repo' })
    githubRepo = '';
 
    /**
     * Github branch
     */
-   @property()
+   @property({ attribute: 'github-branch' })
    githubBranch = 'master';
 
    /**
     * The name of the bug report template to use
     */
-   @property({type: String})
+   @property({ attribute: 'report-a-problem-template', type: String })
    reportAProblemTemplate = "";
 
    override render() {
