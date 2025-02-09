@@ -28,6 +28,10 @@ export const RepoAndSourcePathAndBranch: StoryObj<ImproveThisPage> = {
     const improveThisPage = canvasElement.querySelector(
       'jio-improve-this-page'
     ) as ImproveThisPage;
+
+    // Wait for the component to render
+    await new Promise((resolve) => setTimeout(resolve, 100));
+
     expect(improveThisPage.githubBranch).toEqual('boobear');
     expect(improveThisPage.githubRepo).toEqual(
       'jenkins-infra/jenkins-io-components'
@@ -63,11 +67,17 @@ export const RepoAndSourcePath: StoryObj<ImproveThisPage> = {
     const improveThisPage = canvasElement.querySelector(
       'jio-improve-this-page'
     ) as ImproveThisPage;
+
+    // Wait for the component to render
+    await new Promise((resolve) => setTimeout(resolve, 100));
+
     expect(improveThisPage.githubBranch).toEqual('master');
     expect(improveThisPage.githubRepo).toEqual(
       'jenkins-infra/jenkins-io-components'
     );
-    expect(improveThisPage.sourcePath).toEqual('src/stories/Footer.stories.ts');
+    expect(improveThisPage.sourcePath).toEqual(
+      'src/stories/Footer.stories.ts'
+    );
 
     expect(improveThisPage.shadowRoot.children).toHaveLength(1);
 

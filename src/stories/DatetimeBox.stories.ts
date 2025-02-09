@@ -26,6 +26,10 @@ export const WithStartTimeISO: StoryObj<DatetimeBox> = {
   args: {date: '2022-10-01T00:00:00Z'},
   play: async ({canvasElement}) => {
     const wc = canvasElement.querySelector('jio-datetime-box') as DatetimeBox;
+
+    // Wait for the component to render
+    await new Promise((resolve) => setTimeout(resolve, 100));
+
     const sr = wc.shadowRoot;
     expect(sr.children).toHaveLength(1);
     const container = sr.querySelector('div');
@@ -84,6 +88,10 @@ export const WithStartAndEndTime: StoryObj<DatetimeBox> = {
   args: {date: '2022-10-01T00:00:00Z', endDate: '2022-12-25T00:00:00Z'},
   play: async ({canvasElement}) => {
     const wc = canvasElement.querySelector('jio-datetime-box') as DatetimeBox;
+
+    // Wait for the component to render
+    await new Promise((resolve) => setTimeout(resolve, 100));
+
     const sr = wc.shadowRoot;
     expect(sr.children).toHaveLength(1);
 

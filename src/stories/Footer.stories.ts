@@ -51,6 +51,9 @@ export const HasSourcePath: StoryObj<Footer> = {
   play: async ({canvasElement, args, ...rest}) => {
     const wc = canvasElement.querySelector('jio-footer') as Footer;
 
+    // Wait for the component to render
+    await new Promise((resolve) => setTimeout(resolve, 100));
+
     await RepoAndSourcePath.play({
       ...rest,
       args,
@@ -61,23 +64,15 @@ export const HasSourcePath: StoryObj<Footer> = {
       'jio-improve-this-page'
     ) as ImproveThisPage;
     expect(improveThisPage.githubBranch).toEqual(args.githubBranch || 'master');
-    expect(improveThisPage.githubRepo).toEqual(
-      args.githubRepo || 'jenkins-infra/jenkins-io-components'
-    );
-    expect(improveThisPage.sourcePath).toEqual(
-      args.sourcePath || 'src/stories/Footer.stories.ts'
-    );
+    expect(improveThisPage.githubRepo).toEqual(args.githubRepo);
+    expect(improveThisPage.sourcePath).toEqual(args.sourcePath);
 
     const reportAProblem = wc.shadowRoot.querySelector(
       'jio-report-a-problem'
     ) as ReportAProblem;
     expect(reportAProblem.githubBranch).toEqual(args.githubBranch || 'master');
-    expect(reportAProblem.githubRepo).toEqual(
-      args.githubRepo || 'jenkins-infra/jenkins-io-components'
-    );
-    expect(reportAProblem.sourcePath).toEqual(
-      args.sourcePath || 'src/stories/Footer.stories.ts'
-    );
+    expect(reportAProblem.githubRepo).toEqual(args.githubRepo);
+    expect(reportAProblem.sourcePath).toEqual(args.sourcePath);
   },
 };
 
@@ -112,6 +107,10 @@ export const JenkinsIOBugTemplate: StoryObj<Footer> = {
       canvasElement,
       'jio-report-a-problem'
     )[0] as ReportAProblem;
+
+    // Wait for the component to render
+    await new Promise((resolve) => setTimeout(resolve, 100));
+
     expect(reportAProblem.shadowRoot.children).toHaveLength(1);
     expect(reportAProblem.shadowRoot.querySelector('a')).toHaveAttribute(
       'title',

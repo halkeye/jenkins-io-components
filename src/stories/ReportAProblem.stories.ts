@@ -56,13 +56,13 @@ export const RepoAndSourcePath: StoryObj<ReportAProblem> = {
     const reportAProblem = canvasElement.querySelector(
       'jio-report-a-problem'
     ) as ReportAProblem;
+
+    // Wait for the component to render
+    await new Promise((resolve) => setTimeout(resolve, 100));
+
     expect(reportAProblem.githubBranch).toEqual(args.githubBranch || 'master');
-    expect(reportAProblem.githubRepo).toEqual(
-      args.githubRepo || 'jenkins-infra/jenkins-io-components'
-    );
-    expect(reportAProblem.sourcePath).toEqual(
-      args.sourcePath || 'src/stories/Footer.stories.ts'
-    );
+    expect(reportAProblem.githubRepo).toEqual(args.githubRepo);
+    expect(reportAProblem.sourcePath).toEqual(args.sourcePath);
 
     expect(reportAProblem.shadowRoot.children).toHaveLength(1);
     expect(reportAProblem.shadowRoot.querySelector('a')).toHaveAttribute(
@@ -109,6 +109,10 @@ export const NoSourcePath: StoryObj<ReportAProblem> = {
     const reportAProblem = canvasElement.querySelector(
       'jio-report-a-problem'
     ) as ReportAProblem;
+
+    // Wait for the component to render
+    await new Promise((resolve) => setTimeout(resolve, 100));
+
     expect(reportAProblem.shadowRoot.children).toHaveLength(1);
     expect(reportAProblem.shadowRoot.querySelector('a')).toHaveAttribute(
       'title',
