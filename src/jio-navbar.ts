@@ -256,6 +256,7 @@ export class Navbar extends LitElement {
       <li class="nav-item dropdown">
         <button
           @click=${this._toggleDropdown}
+          @mouseover = ${this._toggleDropdownHover}
           data-idx=${idx}
           aria-expanded=${visible ? "true" : "false"}
           aria-haspopup="true"
@@ -302,6 +303,15 @@ export class Navbar extends LitElement {
     if (this.visibleMenu === parseInt(dataset.idx || "-2", 10)) {
       this.visibleMenu = -1;
     } else {
+      this.visibleMenu = parseInt(dataset.idx || "-1", 10);
+    }
+  }
+
+  private _toggleDropdownHover(e: Event) {
+    e.preventDefault();
+    e.stopPropagation();
+    if (window.innerWidth > 1024) {
+      const dataset = (e.currentTarget as HTMLElement).dataset;
       this.visibleMenu = parseInt(dataset.idx || "-1", 10);
     }
   }
