@@ -29,7 +29,7 @@ export class ImproveThisPage extends LitElement {
    * Github branch
    */
   @property()
-  githubBranch = 'master';
+  githubBranch = 'main';
 
   override render() {
     if (!this.sourcePath) {return null;}

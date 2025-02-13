@@ -50,14 +50,14 @@ export const RepoAndSourcePath: StoryObj<ImproveThisPage> = {
   },
   play: async ({canvasElement}) => {
     const improveThisPage = canvasElement.querySelector('jio-improve-this-page') as ImproveThisPage;
-    expect(improveThisPage.githubBranch).toEqual('master');
+    expect(improveThisPage.githubBranch).toEqual('main');
     expect(improveThisPage.githubRepo).toEqual('jenkins-infra/jenkins-io-components');
     expect(improveThisPage.sourcePath).toEqual('src/stories/Footer.stories.ts');
 
     expect(improveThisPage.shadowRoot.children).toHaveLength(1);
 
     const link = improveThisPage.shadowRoot.querySelector('a');
-    expect(link).toHaveAttribute('href', 'https://github.com/jenkins-infra/jenkins-io-components/edit/master/src/stories/Footer.stories.ts');
+    expect(link).toHaveAttribute('href', 'https://github.com/jenkins-infra/jenkins-io-components/edit/main/src/stories/Footer.stories.ts');
     expect(link).toHaveAttribute('rel', 'noreferrer noopener');
     expect(link).toHaveAttribute('title', 'Edit src/stories/Footer.stories.ts on GitHub');
     expect(link).not.toHaveAttribute('target');

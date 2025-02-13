@@ -48,7 +48,7 @@ export const RepoAndSourcePath: StoryObj<ReportAProblem> = {
   },
   play: async ({canvasElement, args}) => {
     const reportAProblem = canvasElement.querySelector('jio-report-a-problem') as ReportAProblem;
-    expect(reportAProblem.githubBranch).toEqual(args.githubBranch || 'master');
+    expect(reportAProblem.githubBranch).toEqual(args.githubBranch || 'main');
     expect(reportAProblem.githubRepo).toEqual(args.githubRepo || 'jenkins-infra/jenkins-io-components');
     expect(reportAProblem.sourcePath).toEqual(args.sourcePath || 'src/stories/Footer.stories.ts');
 

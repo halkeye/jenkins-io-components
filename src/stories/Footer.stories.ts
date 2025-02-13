@@ -49,12 +49,12 @@ export const HasSourcePath: StoryObj<Footer> = {
     await RepoAndSourcePath.play({...rest, args, canvasElement: wc.shadowRoot as unknown as HTMLElement});
 
     const improveThisPage = wc.shadowRoot.querySelector('jio-improve-this-page') as ImproveThisPage;
-    expect(improveThisPage.githubBranch).toEqual(args.githubBranch || 'master');
+    expect(improveThisPage.githubBranch).toEqual(args.githubBranch || 'main');
     expect(improveThisPage.githubRepo).toEqual(args.githubRepo || 'jenkins-infra/jenkins-io-components');
     expect(improveThisPage.sourcePath).toEqual(args.sourcePath || 'src/stories/Footer.stories.ts');
 
     const reportAProblem = wc.shadowRoot.querySelector('jio-report-a-problem') as ReportAProblem;
-    expect(reportAProblem.githubBranch).toEqual(args.githubBranch || 'master');
+    expect(reportAProblem.githubBranch).toEqual(args.githubBranch || 'main');
     expect(reportAProblem.githubRepo).toEqual(args.githubRepo || 'jenkins-infra/jenkins-io-components');
     expect(reportAProblem.sourcePath).toEqual(args.sourcePath || 'src/stories/Footer.stories.ts');
   }

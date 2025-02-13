@@ -43,7 +43,7 @@ export class ReportAProblem extends LitElement {
    * Github branch
    */
   @property()
-  githubBranch = 'master';
+  githubBranch = 'main';
 
   /**
    * The name of the bug report template to use
