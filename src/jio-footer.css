@@ -1,9 +1,14 @@
 jio-improve-this-page,
-jio-report-a-problem {
+jio-report-a-problem,
+jio-report-infra-issue {
   --jio-a-color: #fff;
 }
 
 jio-improve-this-page {
+  margin-right: 10px;
+}
+
+jio-report-infra-issue {
   margin-right: 10px;
 }
 

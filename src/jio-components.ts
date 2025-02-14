@@ -1,5 +1,6 @@
 import './jio-locale';
 
+export {ReportInfraIssue} from './jio-report-infra-issue';
 export {ReportAProblem} from './jio-report-a-problem';
 export {ImproveThisPage} from './jio-improve-this-page';
 export {ChangelogWeatherIcon} from './jio-changelog-weather-icon';

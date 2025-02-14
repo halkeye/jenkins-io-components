@@ -7,6 +7,7 @@ import {relOrAbsoluteLink} from './jio-navbar-link';
 
 import './jio-improve-this-page';
 import './jio-report-a-problem';
+import './jio-report-infra-issue';
 
 import globalStyles from './global.css';
 import containerStyles from './container.css';
@@ -68,6 +69,9 @@ export class Footer extends LitElement {
    reportAProblemTemplate = "";
 
    override render() {
+      // Check if the current page is /download or /download/mirrors
+      const isDownloadPage = this.sourcePath.includes('/download/') || this.sourcePath.includes('/download/mirrors/');
+
       return html`
 <footer>
    <div class="container">
@@ -75,7 +79,10 @@ export class Footer extends LitElement {
          <div class="col-md-4 col1">
             <p class="box">
                <jio-improve-this-page sourcePath=${this.sourcePath} githubRepo=${this.githubRepo} .githubBranch=${ifDefined(this.githubBranch)}></jio-improve-this-page>
-               <jio-report-a-problem sourcePath=${this.sourcePath} githubRepo=${this.githubRepo} .githubBranch=${ifDefined(this.githubBranch)} .template=${ifDefined(this.reportAProblemTemplate)}></jio-report-a-problem>
+               ${isDownloadPage
+                  ? html`<jio-report-infra-issue sourcePath=${this.sourcePath} githubRepo=${this.githubRepo} .githubBranch=${ifDefined(this.githubBranch)}></jio-report-infra-issue>`
+                  : html`<jio-report-a-problem sourcePath=${this.sourcePath} githubRepo=${this.githubRepo} .githubBranch=${ifDefined(this.githubBranch)} .template=${ifDefined(this.reportAProblemTemplate)}></jio-report-a-problem>`
+               }
             </p>
             <div class="license-box">
               ${licenseHtmls[this.license] || nothing}
@@ -199,5 +206,3 @@ declare global {
       'jio-footer': Footer;
    }
 }
-
-
